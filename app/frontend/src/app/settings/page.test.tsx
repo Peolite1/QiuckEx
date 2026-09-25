@@ -1,5 +1,5 @@
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi, beforeEach, Mock } from "vitest";
 import Settings from "./page";
 import { fetchWithAuth } from "@/lib/api";
 
@@ -32,7 +32,7 @@ describe("Settings Page", () => {
       githubHandle: "testgithub",
     };
 
-    (fetchWithAuth as any).mockResolvedValueOnce({
+    (fetchWithAuth as Mock).mockResolvedValueOnce({
       ok: true,
       json: async () => mockProfile,
     });
@@ -56,7 +56,7 @@ describe("Settings Page", () => {
   });
 
   it("calls save API endpoint when Save button is clicked", async () => {
-    (fetchWithAuth as any).mockResolvedValue({
+    (fetchWithAuth as Mock).mockResolvedValue({
       ok: true,
       json: async () => ({}),
     });

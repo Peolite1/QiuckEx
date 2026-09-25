@@ -61,7 +61,7 @@ export default function Settings() {
       }
       setSaveStatus("success");
       setTimeout(() => setSaveStatus("idle"), 3000);
-    } catch (err) {
+    } catch {
       setSaveStatus("error");
     } finally {
       setIsSaving(false);
